@@ -1,6 +1,6 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::ForecastController < ApplicationController
     def index
-        location = MapFacade.get_weather(forecast_params)
+        location = MapFacade.find_lat_long(forecast_params)
         weather = WeatherFacade.forecast(location)
         render json: ForecastSerializer.new(weather)
       end

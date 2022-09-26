@@ -1,14 +1,14 @@
 class Forecast
-    attr_reader :current_weather, :daily_weather, :hourly_weather
+    attr_reader :current_weather, :daily_weather, :hourly_weather, :id
     
     def initialize(data)
         @current_weather = CurrentWeather.new(data[:current])
-        
-        @daily_weather = data[:daily].map do |x|
+        @id = nil
+        @daily_weather = data[:daily].first(5).map do |x|
             DailyWeather.new(x)
         end
 
-        @hourly_weather = data[:hourly].map do |x|
+        @hourly_weather = data[:hourly].first(8).map do |x|
             HourlyWeather.new(x)
         end
     end
