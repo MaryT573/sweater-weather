@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe WeatherService do
-    it 'gets data from api' do
-        weather = WeatherService.get_weather
-       
-        expect(movie[:results][0]).to be_a(Hash)
-        expect(movie[:results][0][:title]).to be_a(String)
+    it 'returns data from api based on lat and long' do
+        location = {:lat=>39.738453, :lng=>-104.984853}
+        weather = WeatherService.get_weather(location)
+        weather_now = weather[:current]
+        weather_then = weather[:daily]
+        weather_hourly = weather[:hourly]
+         
+        expect(weather_now).to be_a(Hash)
+        expect(weather_then).to be_a(Array)
+        expect(weather_hourly).to be_a(Array)
+        expect(weather_then.count).to eq(8)
+        expect(weather_hourly.count).to eq(48)
     end
 end
