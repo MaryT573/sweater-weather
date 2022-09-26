@@ -17,4 +17,9 @@ class WeatherFacade
             DailyWeather.new(daily_weather)
         end
     end
+
+    def self.forecast(location)
+        parsed_json = WeatherService.get_weather(location)
+        Forecast.new(parsed_json)
+    end
 end
