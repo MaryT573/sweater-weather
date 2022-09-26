@@ -8,7 +8,8 @@ class CurrentWeather
                 :uvi, 
                 :visibility, 
                 :conditions,
-                :icon
+                :icon,
+                :id
 
     def initialize(data) 
         @datetime = Time.at(data[:dt]).to_datetime
@@ -21,5 +22,6 @@ class CurrentWeather
         @visibility = data[:visibility]
         @conditions = data[:weather].first[:description]
         @icon = data[:weather].first[:icon]
+        @id = nil
     end
 end
