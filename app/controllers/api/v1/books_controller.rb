@@ -3,9 +3,10 @@ class Api::V1::BooksController < ApplicationController
         city = MapFacade.find_lat_long(forecast_params)
         weather = WeatherFacade.current(city)
         books = BookFacade.search_books(location[:location])
+        book_count = books.count
         data = []
-        data.push(weather, books)
-        render json: data, include: [:weather, :books]
+        data.push(location, book_count, weather, books)
+        render json: data, include: [:location, :book_count, :weather, :books]
       end
       
     private
