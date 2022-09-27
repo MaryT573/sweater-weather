@@ -1,8 +1,9 @@
 class Api::V1::BreweryController < ApplicationController
     def index
-        location = MapFacade.find_lat_long(forecast_params)
-        weather = WeatherFacade.forecast(location)
-        render json: ForecastSerializer.new(weather)
+        city = MapFacade.find_lat_long(params[:location])
+        data = {current_weather: WeatherFacade.current(city), breweries: BrewFacade.get_brew(city, params[:quantity]), location: params[:location]}
+         
+        render json: BrewerySerializer.format_response(data)
       end
       
     private
