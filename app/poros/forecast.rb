@@ -1,7 +1,7 @@
 class Forecast
     attr_reader :current_weather, :daily_weather, :hourly_weather, :id
     
-    def initialize(data)
+    def initialize(data) 
         @current_weather = CurrentWeather.new(data[:current])
         @id = nil
         @daily_weather = data[:daily].first(5).map do |x|
