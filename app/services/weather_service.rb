@@ -6,7 +6,7 @@ class WeatherService
 
     def self.get_weather(location)
         response = conn.get("/data/2.5/onecall") do |faraday|
-            faraday.params['appid'] = ENV['weather_key']
+            faraday.params['appid'] = ENV['key']
             faraday.params['exclude'] = 'minutely,alerts'
             faraday.params['lon'] = location[:lng]
             faraday.params['lat'] = location[:lat]
