@@ -1,29 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe 'User Request' do
-    xit 'gets response with brewery data and weather data' do
-        post '/api/v1/users/'
-        
-        expect(response).to be_successful
+RSpec.describe 'Users Endpoint' do
+  describe 'Happy Path Sign Up' do
+    it 'Posts a new user to the database' do
+      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+      user_params = {
+        "username": 'ben@ben.com',
+        "password": "ben123",
+        "password_confirmation": "ben123"
+      }
 
-        breweries = JSON.parse(response.body, symbolize_names: true)[:data]
-        
-        expect(breweries).to be_a Hash
+      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
 
-        expect(breweries[:id]).to eq(nil)
-        expect(breweries[:type]).to eq("breweries")
-        expect(breweries[:attributes][:destination]).to eq("denver")
-
-        expect(breweries[:attributes][:forcast]).to have_key(:summary)
-        expect(breweries[:attributes][:forcast]).to have_key(:temperature)
-        expect(breweries[:attributes][:forcast]).to_not have_key(:datetime)
-        expect(breweries[:attributes][:forcast]).to_not have_key(:name)
-
-        expect(breweries[:attributes][:breweries].count).to eq(5)
-        expect(breweries[:attributes][:breweries].first).to have_key(:id)
-        expect(breweries[:attributes][:breweries].first).to have_key(:name)
-        expect(breweries[:attributes][:breweries].first).to have_key(:brewery_type)
-        expect(breweries[:attributes][:breweries].first).to_not have_key(:street)
-        expect(breweries[:attributes][:breweries].first).to_not have_key(:summary)
+      result = JSON.parse(response.body, symbolize_names: true)
     end
 end

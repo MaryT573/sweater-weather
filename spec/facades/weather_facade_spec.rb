@@ -4,7 +4,7 @@ RSpec.describe WeatherFacade do
     it 'gets current weather' do
         current = WeatherFacade.current({:lat=>39.738453, :lng=>-104.984853})          
         
-        expect(current).to be_a Array
+        expect(current).to be_a Hash
         expect(current).to be_all CurrentWeather
         expect(current).to_not be_all DailyWeather
         expect(current).to_not be_all HourlyWeather
