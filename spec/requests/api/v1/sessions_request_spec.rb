@@ -45,6 +45,7 @@ RSpec.describe 'Sessions Endpoint' do
 
         expect(response).to_not be_successful
         expect(response.status).to eq(400)
+        expect(response.body).to eq("{\"error\":\"Incorrect Credentials\"}")
     end
   end
 end
