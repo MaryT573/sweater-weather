@@ -3,14 +3,17 @@ require 'rails_helper'
 RSpec.describe 'Users Endpoint' do
   describe 'Happy Path Sign Up' do
     it 'Posts a new user to the database' do
-      headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
       user_params = {
           "username": "whatever@example.com",
           "password": "password",
           "password_confirmation": "password"
       }
 
-      post '/api/v1/users', headers: headers, params: JSON.generate(user_params)
+      post '/api/v1/users', params: user_params
+      
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
       result = JSON.parse(response.body, symbolize_names: true)
       
       expect(result).to be_a Hash
