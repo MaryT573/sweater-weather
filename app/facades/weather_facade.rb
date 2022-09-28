@@ -22,4 +22,11 @@ class WeatherFacade
         parsed_json = WeatherService.get_weather(location)
         Forecast.new(parsed_json)
     end
+
+    def self.hourly_eta(location, time)
+        parsed_json = WeatherService.get_weather(location)
+        time = time - 1
+        data = parsed_json[:hourly][time] 
+        WeatherEta.new(data)
+    end
 end
