@@ -13,7 +13,7 @@ RSpec.describe MapService do
         map = MapService.directions( "denver, co", "Estes Park, CO" )
         
         directions = map[:route]
-
+        
         expect(directions).to be_a(Hash)
         expect(directions[:formattedTime]).to eq("01:22:19")
         expect(directions[:hasAccessRestriction]).to eq(false)
