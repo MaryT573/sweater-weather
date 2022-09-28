@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/breweries', to: 'brewery#index'
       post '/users', to: 'users#create'
       post '/sessions', to: 'sessions#create'
+      post '/road_trip', to: 'roadtrip#create'
     end
   end
 end
