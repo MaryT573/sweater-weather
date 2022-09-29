@@ -2,8 +2,9 @@ class Api::V1::TripController < ApplicationController
 
     def create
         directions = MapFacade.route(params[:origin], params[:destination])
+        #require 'pry'; binding.pry 
         if User.find_by(api_key: params[:api_key])     
-            if directions.blocked == true || directions.bordercrossing == true
+            if directions.blocked == nil || directions.bordercrossing == nil
                 render json: { error: 'Impossible Route' }, status: 401
             else
                 route_time = directions.time.to_i
