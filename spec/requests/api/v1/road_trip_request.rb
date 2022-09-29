@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'roadtrip Endpoint' do
     describe 'get route' do 
-        it 'Happy Path: gets route and weather' do
+        it 'Happy Path: gets route and weather', :vcr do
             user_params = {
                 "username": "whatever@example.com",
                 "password": "password",
@@ -36,7 +36,7 @@ RSpec.describe 'roadtrip Endpoint' do
             expect(result[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
         end
 
-        it 'Sad Path: no/wrong api key returns error' do
+        it 'Sad Path: no/wrong api key returns error', :vcr do
             user_params = {
                 "username": "whatever@example.com",
                 "password": "password",

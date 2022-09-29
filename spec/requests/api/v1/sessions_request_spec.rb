@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Sessions Endpoint' do
   describe 'Login' do
-    it 'checks for exisiting user' do
+    it 'checks for exisiting user', :vcr do
         user_params = {
             "username": "whatever@example.com",
             "password": "password",
@@ -29,7 +29,7 @@ RSpec.describe 'Sessions Endpoint' do
         expect(result[:data][:attributes][:api_key]).to be_a String
     end
 
-    it 'fails if password doesnt match' do
+    it 'fails if password doesnt match', :vcr do
         user_params = {
             "username": "whatever@example.com",
             "password": "password",

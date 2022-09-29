@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MapService do
-    it 'takes address and returns lat and long' do
+    it 'takes address and returns lat and long', :vcr do
         map = MapService.map_search("denver, co")
         map_lat_lng = map[:results][0][:locations][0][:latLng]
         
@@ -9,7 +9,7 @@ RSpec.describe MapService do
         expect(map_lat_lng).to eq({:lat=>39.738453, :lng=>-104.984853})
     end
 
-    it 'takes a starting location and ending location and returns time' do
+    it 'takes a starting location and ending location and returns time', :vcr do
         map = MapService.directions( "denver, co", "Estes Park, CO" )
         
         directions = map[:route]

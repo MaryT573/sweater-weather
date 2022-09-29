@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WeatherFacade do
-    it 'gets current weather' do
+    it 'gets current weather', :vcr do
         current = WeatherFacade.current({:lat=>39.738453, :lng=>-104.984853})          
         
         expect(current).to be_a Hash
@@ -10,7 +10,7 @@ RSpec.describe WeatherFacade do
         expect(current).to_not be_all HourlyWeather
     end
 
-    it 'gets hourly weather' do
+    it 'gets hourly weather', :vcr do
         hourly = WeatherFacade.hourly({:lat=>39.738453, :lng=>-104.984853})          
         
         expect(hourly).to be_a Array

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WeatherService do
-    it 'returns data from api based on lat and long' do
+    it 'returns data from api based on lat and long', :vcr do
         location = {:lat=>39.738453, :lng=>-104.984853}
         weather = WeatherService.get_weather(location)
         weather_now = weather[:current]

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BrewFacade do
-    it 'feeds data from service into poro' do
+    it 'feeds data from service into poro', :vcr do
         brew = BrewFacade.get_brew({:lat=>39.738453, :lng=>-104.984853}, 5)          
          
         expect(brew).to be_a Array
