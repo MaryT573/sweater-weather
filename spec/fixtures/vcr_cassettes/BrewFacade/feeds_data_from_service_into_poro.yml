@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openbrewerydb.org/breweries?location%5Blat%5D=39.738453&location%5Blng%5D=-104.984853&per_page=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.5.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Sep 2022 01:46:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Accept, Origin, Accept-Encoding
+      Cache-Control:
+      - public, max-age=86400
+      Etag:
+      - W/"1c6e6ed6de41533ed93b1961fa6ffdbd"
+      X-Request-Id:
+      - f9101889-89aa-4b75-8203-a9151401ca23
+      X-Runtime:
+      - '0.014735'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '98'
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=oPvKRYhKOGeXiGoT%2FR8ZqtYqtU42GB5JvOwZbKA%2FDIV3IbOoaQUGUK%2BXcF7GvkasWTvNDgg2URQdPjL3lkDoCTuRPdoBWkQDEK4xrsRyB%2FhhAiLfTaFhTT92iGALZ6guNU9IBqT2tsTC28fom5S5F7RjdYM%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 75210c37fcd7a9eb-DFW
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":"10-56-brewing-company-knox","name":"10-56 Brewing Company","brewery_type":"micro","street":"400
+        Brown Cir","address_2":null,"address_3":null,"city":"Knox","state":"Indiana","county_province":null,"postal_code":"46534","country":"United
+        States","longitude":"-86.627954","latitude":"41.289715","phone":"6308165790","website_url":null,"updated_at":"2022-08-20T02:56:08.975Z","created_at":"2022-08-20T02:56:08.975Z"},{"id":"10-barrel-brewing-co-bend-1","name":"10
+        Barrel Brewing Co","brewery_type":"large","street":"62970 18th St","address_2":null,"address_3":null,"city":"Bend","state":"Oregon","county_province":null,"postal_code":"97701-9847","country":"United
+        States","longitude":"-121.28170597038259","latitude":"44.08683530625218","phone":"5415851007","website_url":"http://www.10barrel.com","updated_at":"2022-08-20T02:56:08.975Z","created_at":"2022-08-20T02:56:08.975Z"},{"id":"10-barrel-brewing-co-bend-2","name":"10
+        Barrel Brewing Co","brewery_type":"large","street":"1135 NW Galveston Ave
+        Ste B","address_2":null,"address_3":null,"city":"Bend","state":"Oregon","county_province":null,"postal_code":"97703-2465","country":"United
+        States","longitude":"-121.32880209261799","latitude":"44.057564901366796","phone":"5415851007","website_url":null,"updated_at":"2022-08-20T02:56:08.975Z","created_at":"2022-08-20T02:56:08.975Z"},{"id":"10-barrel-brewing-co-bend-pub-bend","name":"10
+        Barrel Brewing Co - Bend Pub","brewery_type":"large","street":"62950 NE 18th
+        St","address_2":null,"address_3":null,"city":"Bend","state":"Oregon","county_province":null,"postal_code":"97701","country":"United
+        States","longitude":"-121.2809536","latitude":"44.0912109","phone":"5415851007","website_url":null,"updated_at":"2022-08-20T02:56:08.975Z","created_at":"2022-08-20T02:56:08.975Z"},{"id":"10-barrel-brewing-co-boise-boise","name":"10
+        Barrel Brewing Co - Boise","brewery_type":"large","street":"826 W Bannock
+        St","address_2":null,"address_3":null,"city":"Boise","state":"Idaho","county_province":null,"postal_code":"83702-5857","country":"United
+        States","longitude":"-116.202929","latitude":"43.618516","phone":"2083445870","website_url":"http://www.10barrel.com","updated_at":"2022-08-20T02:56:08.975Z","created_at":"2022-08-20T02:56:08.975Z"}]'
+  recorded_at: Thu, 29 Sep 2022 01:46:54 GMT
+recorded_with: VCR 6.1.0
