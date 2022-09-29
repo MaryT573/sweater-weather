@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Brewery Request' do
-    it 'gets response with forcast data' do
+    it 'gets response with forcast data', :vcr do
         get '/api/v1/forecast?location=denver,co'
         
         expect(response).to be_successful

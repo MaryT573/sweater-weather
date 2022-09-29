@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users Endpoint' do
-  describe 'Happy Path Sign Up' do
+  describe 'Happy Path Sign Up', :vcr do
     it 'Posts a new user to the database' do
       user_params = {
           "username": "whatever@example.com",
@@ -24,7 +24,7 @@ RSpec.describe 'Users Endpoint' do
       expect(result[:data][:attributes][:api_key]).to be_a String
     end
 
-    it 'Sad Path: returns 401 if email is already taken' do
+    it 'Sad Path: returns 401 if email is already taken', :vcr do
       user_params = {
         "username": "whatever@example.com",
         "password": "password",

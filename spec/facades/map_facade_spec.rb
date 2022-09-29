@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe MapFacade do
-    it 'reads data from api' do
+    it 'reads data from api', :vcr do
         latlong = MapFacade.find_lat_long("denver, co")          
         
         expect(latlong).to be_a Hash
         expect(latlong.count).to eq(2)
     end
 
-    it "reads direction data and feeds into poro" do
+    it "reads direction data and feeds into poro", :vcr do
         map = MapFacade.route( "denver, co", "Estes Park, CO" )
          
         expect(map).to be_a RoadTrip
