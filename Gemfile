@@ -47,6 +47,7 @@ group :development, :test do
   gem 'webmock'
   gem 'jsonapi-serializer'
   gem 'vcr'
+  gem 'simplecov'
 end
 
 group :development do
