@@ -57,5 +57,27 @@ RSpec.describe 'roadtrip Endpoint' do
             expect(response.status).to eq(401)
             expect(response.body).to eq("{\"error\":\"Wrong Key\"}")
         end
+
+        it 'Sad Path: Impossible route', :vcr do
+            user_params = {
+                "username": "whatever@example.com",
+                "password": "password",
+                "password_confirmation": "password"
+            }
+            post '/api/v1/users', params: user_params
+
+            user_result = JSON.parse(response.body, symbolize_names: true)
+
+            trip_params = {
+                "origin": "Denver,CO",
+                "destination": "London,UK",
+                "api_key": user_result[:data][:attributes][:api_key]
+            }
+            post '/api/v1/road_trip', params: trip_params
+
+            expect(response).to_not be_successful
+            expect(response.status).to eq(401)
+            expect(response.body).to eq("{\"error\":\"Impossible Route\"}")
+        end
     end
 end
