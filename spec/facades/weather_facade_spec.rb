@@ -27,4 +27,13 @@ RSpec.describe WeatherFacade do
         expect(future).to_not be_all CurrentWeather
         expect(future).to_not be_all HourlyWeather
     end
+
+    it 'gets eta weather' do
+        eta = WeatherFacade.hourly_eta({:lat=>39.738453, :lng=>-104.984853}, 3)          
+         
+        expect(eta).to be_a WeatherEta
+        expect(eta).to_not be HourlyWeather
+        expect(eta).to_not be DailyWeather
+        expect(eta).to_not be CurrentWeather
+    end
 end
