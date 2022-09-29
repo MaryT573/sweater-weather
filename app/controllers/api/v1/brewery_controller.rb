@@ -5,10 +5,4 @@ class Api::V1::BreweryController < ApplicationController
          
         render json: BrewerySerializer.format_response(data)
       end
-      
-    private
-        
-    def forecast_params
-        params.permit(:location)
-    end
-end
+    end 
